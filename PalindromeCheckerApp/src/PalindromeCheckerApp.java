@@ -9,41 +9,40 @@
  *At this stage, the application:
  * - Stores a predefined string
  =============================================
- UC4 - Palindrome Check Using Character arrays
+ UC5: Stack-Based Palindrome Checker
  * ===========================================
- * Checking Palindrome by converting String to character array using
- * char[] letters = word.toCharArray();
- * 2 pointers are initiated start=0 ; end = word.length()-1;
+ * Checking Palindrome using Stack
+ * Stack<Character> Letter_Stack = new Stack<>();
+ * use for loop to .push() all elements into stack
  * declare boolean ispalindrome = true (initially assume its true)
- * While loop is implemented while (start<end)
- *if word[start] != word[end]
- *update palindrome to false and break loop
- *Display the result
+ * for loop for [0 to word.length()-1] comparing elements
+ * if(word.charAt(i)!=Letter_Stack.pop())
+ * update ispalindrome to false and break loop
+ * Display the result
 
  @Developer Supratik
- @version 4.0
+ @version 5.0
   * */
-
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
     public static void main(String[] args){
         String word = "hello";
-        char[] letters = word.toCharArray();
-        int start = 0;
-        int end = word.length()-1;
-        boolean ispalendrome = true;
-        while(start<end){
-            if(letters[start]!=letters[end]){
-                ispalendrome = false;
+        Stack<Character> Letter_Stack = new Stack<>();
+        for(int i=0;i<word.length();i++){
+            Letter_Stack.push(word.charAt(i));
+        }
+        boolean ispalindrome = true;
+        for(int i=0;i<word.length();i++){
+            if(word.charAt(i)!=Letter_Stack.pop()){
+                ispalindrome = false;
                 break;
             }
-            start++;
-            end--;
         }
-        if(ispalendrome){
+        if(ispalindrome){
             System.out.println("Palindrome");
         }else{
-            System.out.println("Palindrome");
+            System.out.println("Not Palindrome");
         }
     }
 }
