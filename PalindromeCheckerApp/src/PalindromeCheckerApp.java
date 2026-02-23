@@ -8,32 +8,33 @@
  *
  *At this stage, the application:
  * - Stores a predefined string
- Compares characters from both ends
- *- Determines whether the string is a palindrome
- *- Displays the result on the console
+ =============================================
+ UC3 - Palindrome Check Using String Reverse
+ * ===========================================
+ * Checking Palindrome by reversing the String
+ * Hardcoded String is Reversed using For loop and Then both string are compared using .equals() method
  *
- *This use case introduces fundamental comparison logic
- * before using advanced data structures.
- *
- * @author Developer
- * @version 2.0
-public class UseCase2PalindromeChecker App {
-/**
- * Application entry point for UC2.
- *
- * @param args Command-line arguments
- */
+ Display the result
+
+ @Developer Supratik
+ @version 3.0
+  * */
 
 
 public class PalindromeCheckerApp {
     public static void main(String[] args){
-        String word = "madam";
-        for(int i=0;i<word.length()/2;i++){
-            if(word.charAt(i)!=word.charAt(word.length()-1-i)){
-                System.out.println("Not Palindrome");
-                return;
-            }
+        System.out.println("Welcome to the Palindrome Checker Management System");
+        System.out.println("Version 1.0");
+        System.out.println("System initialized successfully.");
+        String word = "hello";
+        String word_reverse = "";
+        for(int i=word.length()-1;i>=0;i--){
+            word_reverse = word_reverse + word.charAt(i);
         }
-        System.out.println("Palindrome");
+        if(word.equals(word_reverse)){
+            System.out.println("Palindrome");
+        } else{
+            System.out.println("Not Palindrome");
+        }
     }
 }
