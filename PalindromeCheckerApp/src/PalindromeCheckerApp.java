@@ -9,32 +9,41 @@
  *At this stage, the application:
  * - Stores a predefined string
  =============================================
- UC3 - Palindrome Check Using String Reverse
+ UC4 - Palindrome Check Using Character arrays
  * ===========================================
- * Checking Palindrome by reversing the String
- * Hardcoded String is Reversed using For loop and Then both string are compared using .equals() method
- *
- Display the result
+ * Checking Palindrome by converting String to character array using
+ * char[] letters = word.toCharArray();
+ * 2 pointers are initiated start=0 ; end = word.length()-1;
+ * declare boolean ispalindrome = true (initially assume its true)
+ * While loop is implemented while (start<end)
+ *if word[start] != word[end]
+ *update palindrome to false and break loop
+ *Display the result
 
  @Developer Supratik
- @version 3.0
+ @version 4.0
   * */
 
 
 public class PalindromeCheckerApp {
     public static void main(String[] args){
-        System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version 1.0");
-        System.out.println("System initialized successfully.");
         String word = "hello";
-        String word_reverse = "";
-        for(int i=word.length()-1;i>=0;i--){
-            word_reverse = word_reverse + word.charAt(i);
+        char[] letters = word.toCharArray();
+        int start = 0;
+        int end = word.length()-1;
+        boolean ispalendrome = true;
+        while(start<end){
+            if(letters[start]!=letters[end]){
+                ispalendrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
-        if(word.equals(word_reverse)){
+        if(ispalendrome){
             System.out.println("Palindrome");
-        } else{
-            System.out.println("Not Palindrome");
+        }else{
+            System.out.println("Palindrome");
         }
     }
 }
