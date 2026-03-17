@@ -1,28 +1,23 @@
 import java.util.*;
 
-public class PalindromeCheckerApp {
-    public static void main(String[] args) {
+class Main {
+    public static void PalindromeCheckerApp(String[] args) {
+        String input = "civic";
 
-        // Define the input string
-        String input = "refer";
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
 
-        // Create a Deque to store characters
-        Deque<Character> deque = new ArrayDeque<>();
-
-        // Add each character to the deque
+        // Add characters to queue and stack
         for (char c : input.toCharArray()) {
-            deque.addLast(c);
+            queue.add(c);
+            stack.push(c);
         }
 
-        // Flag to track palindrome result
         boolean isPalindrome = true;
 
-        // Continue comparison while more than one element exists
-        while (deque.size() > 1) {
-            char first = deque.removeFirst();
-            char last = deque.removeLast();
-
-            if (first != last) {
+        // Compare elements
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack.pop())) {
                 isPalindrome = false;
                 break;
             }
