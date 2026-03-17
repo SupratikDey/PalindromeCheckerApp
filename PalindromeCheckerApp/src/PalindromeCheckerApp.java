@@ -1,24 +1,26 @@
 /**
- * MAIN CLASS UseCase9PalindromeCheckerApp
- * Use Case 9: Recursive Palindrome Checker
+ * MAIN CLASS - UseCase11PalindromeCheckerApp
+ * Use Case 11: Object-Oriented Palindrome Service
  *
  * Description:
- * This class validates a palindrome using recursion.
- * Characters are compared from outer positions moving inward.
- * Recursion stops when:
- * 1. All characters match
- * 2. A mismatch is found
+ * This class demonstrates palindrome validation using object-oriented design.
+ * The palindrome logic is encapsulated inside a PalindromeService class.
  *
- * @author Developer
- * @version 9.0
+ * Benefits:
+ * - Reusability
+ * - Readability
+ * - Separation of concerns
+ *
+ * @author Supratik
+ * @version 11.0
  */
 
 import java.util.Scanner;
 
-public class UseCase9PalindromeCheckerApp {
+public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC9.
+     * Application entry point for UC11.
      * @param args Command-line arguments
      */
     public static void main(String[] args) {
@@ -27,34 +29,42 @@ public class UseCase9PalindromeCheckerApp {
         System.out.print("Input: ");
         String input = sc.nextLine();
 
-        boolean result = check(input, 0, input.length() - 1);
+        // Create object of service class
+        PalindromeService service = new PalindromeService();
+
+        boolean result = service.checkPalindrome(input);
 
         System.out.println("Is Palindrome?: " + result);
 
         sc.close();
     }
+}
+
+/**
+ * Service class that contains palindrome logic
+ */
+class PalindromeService {
 
     /**
-     * Recursively checks whether a string is palindrome.
-     *
-     * @param s Input string
-     * @param start Starting index
-     * @param end Ending index
-     * @return true if palindrome, otherwise false
+     * Checks whether the input string is a palindrome
+     * @param input Input string
+     * @return true if palindrome, false otherwise
      */
-    private static boolean check(String s, int start, int end) {
+    public boolean checkPalindrome(String input) {
 
-        // Base case: if pointers cross or meet
-        if (start >= end) {
-            return true;
+        // Initialize pointers
+        int start = 0;
+        int end = input.length() - 1;
+
+        // Compare characters moving inward
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
         }
 
-        // If mismatch found
-        if (s.charAt(start) != s.charAt(end)) {
-            return false;
-        }
-
-        // Recursive call
-        return check(s, start + 1, end - 1);
+        return true;
     }
 }
