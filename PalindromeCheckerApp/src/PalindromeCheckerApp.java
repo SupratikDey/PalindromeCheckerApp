@@ -1,18 +1,17 @@
 /**
- * MAIN CLASS - UseCase12PalindromeCheckerApp
- * Use Case 12: Strategy Pattern for Palindrome Algorithms
+ * MAIN CLASS - UseCase13PalindromeCheckerApp
+ * Use Case 13: Performance Comparison
  *
  * Description:
- * Demonstrates dynamic selection of palindrome algorithms
- * using Strategy Design Pattern.
+ * Measures execution time of palindrome validation algorithms.
  *
  * @author Supratik
- * @version 12.0
+ * @version 13.0
  */
 
 import java.util.Scanner;
 
-public class UseCase12PalindromeCheckerApp {
+public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -20,43 +19,46 @@ public class UseCase12PalindromeCheckerApp {
         System.out.print("Input: ");
         String input = sc.nextLine();
 
-        // Inject strategy (Stack-based)
+        // Choose strategy (Stack-based here)
         PalindromeStrategy strategy = new StackStrategy();
 
-        // Execute selected algorithm
+        // Start time
+        long startTime = System.nanoTime();
+
         boolean result = strategy.check(input);
 
+        // End time
+        long endTime = System.nanoTime();
+
+        // Calculate duration
+        long duration = endTime - startTime;
+
         System.out.println("Is Palindrome?: " + result);
+        System.out.println("Execution Time (nanoseconds): " + duration);
 
         sc.close();
     }
 }
 
 /**
- * INTERFACE - PalindromeStrategy
- * Defines contract for all palindrome algorithms
+ * Strategy Interface
  */
 interface PalindromeStrategy {
     boolean check(String input);
 }
 
 /**
- * CLASS - StackStrategy
- * Stack-based implementation of palindrome checking
+ * Stack-based Strategy
  */
 class StackStrategy implements PalindromeStrategy {
 
     public boolean check(String input) {
-
-        // Create a stack
         java.util.Stack<Character> stack = new java.util.Stack<>();
 
-        // Push all characters to stack
         for (char c : input.toCharArray()) {
             stack.push(c);
         }
 
-        // Compare by popping from stack
         for (char c : input.toCharArray()) {
             if (c != stack.pop()) {
                 return false;
