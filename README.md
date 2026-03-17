@@ -18,3 +18,32 @@ Version 4.0 - UC4: Palindrome Check Using Character arrays
 * upadte palindrome to false and break loop
 * Display the result
 
+Version6 : Queue Stack Fairness Check
+* Description:
+  *This class demonstrates palindrome validation using
+* two different data structures:
+  Queue (FIFO First In First Out)
+  Stack (LIFO Last In First Out)
+* Characters are inserted into both structures and then
+* compared by removing from the front of the queue and
+  the top of the stack.
+* If all characters match, the input string is confirmed
+* as a palindrome.
+  *This use case helps understand how FIFO and LIFO
+  behaviors can be combined for symmetric comparison.
+  @author Developer
+  @version 6.0
+
+UC7: Deque-Based Optimized Palindrome Checker
+Goal: Use Deque to compare front and rear elements.
+Flow:
+Insert characters into deque
+Remove first & last
+Compare until empty
+Key Concepts used in UC7:
+Deque (Double Ended Queue) – A data structure that allows insertion and deletion from both front and rear ends.
+Front and Rear Access – Enables direct comparison of first and last characters.
+Optimized Data Handling – Eliminates the need for separate reversal data structures.
+Data Structure: Deque
+
+

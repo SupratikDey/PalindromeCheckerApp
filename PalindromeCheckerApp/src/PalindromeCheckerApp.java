@@ -23,10 +23,8 @@ class Main {
             }
         }
 
-        if (isPalindrome) {
-            System.out.println(input + " is a palindrome");
-        } else {
-            System.out.println(input + " is not a palindrome");
-        }
+        // Print result
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
