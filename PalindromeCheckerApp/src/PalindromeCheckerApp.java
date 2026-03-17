@@ -1,37 +1,60 @@
-import java.util.LinkedList;
+/**
+ * MAIN CLASS UseCase9PalindromeCheckerApp
+ * Use Case 9: Recursive Palindrome Checker
+ *
+ * Description:
+ * This class validates a palindrome using recursion.
+ * Characters are compared from outer positions moving inward.
+ * Recursion stops when:
+ * 1. All characters match
+ * 2. A mismatch is found
+ *
+ * @author Developer
+ * @version 9.0
+ */
 
-public class PalindromeCheck {
+import java.util.Scanner;
+
+public class UseCase9PalindromeCheckerApp {
+
+    /**
+     * Application entry point for UC9.
+     * @param args Command-line arguments
+     */
     public static void main(String[] args) {
-        // Define the input string
-        String input = "level";
+        Scanner sc = new Scanner(System.in);
 
-        // Create a LinkedList to store characters
-        LinkedList<Character> list = new LinkedList<>();
+        System.out.print("Input: ");
+        String input = sc.nextLine();
 
-        // Add each character to the linked list
-        for (char c : input.toCharArray()) {
-            list.add(c);
+        boolean result = check(input, 0, input.length() - 1);
+
+        System.out.println("Is Palindrome?: " + result);
+
+        sc.close();
+    }
+
+    /**
+     * Recursively checks whether a string is palindrome.
+     *
+     * @param s Input string
+     * @param start Starting index
+     * @param end Ending index
+     * @return true if palindrome, otherwise false
+     */
+    private static boolean check(String s, int start, int end) {
+
+        // Base case: if pointers cross or meet
+        if (start >= end) {
+            return true;
         }
 
-        // Flag to track palindrome state
-        boolean isPalindrome = true;
-
-        // Compare until only one or zero elements remain
-        while (list.size() > 1) {
-            char first = list.removeFirst(); // remove from front
-            char last = list.removeLast();   // remove from end
-
-            if (first != last) {
-                isPalindrome = false;
-                break;
-            }
+        // If mismatch found
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
         }
 
-        // Output result
-        if (isPalindrome) {
-            System.out.println("Palindrome");
-        } else {
-            System.out.println("Not a Palindrome");
-        }
+        // Recursive call
+        return check(s, start + 1, end - 1);
     }
 }
